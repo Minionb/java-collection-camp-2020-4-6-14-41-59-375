@@ -2,6 +2,8 @@ package com.thoughtworks.collection;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Reduce {
@@ -13,17 +15,19 @@ public class Reduce {
     }
 
     public double getAverage() {
-        throw new NotImplementedException();
+        return arrayList.stream().mapToInt(element -> element).average().getAsDouble();
     }
 
 
     public int getIndexOfFirstEven() {
-        throw new NotImplementedException();
+        return arrayList.indexOf(arrayList.stream().filter(element -> element % 2 == 0).findFirst().get());
     }
 
 
     public int getLastOdd() {
-        throw new NotImplementedException();
+        List<Integer> reverseList = new ArrayList<>(arrayList);
+        Collections.reverse(reverseList);
+        return reverseList.stream().filter(element -> element % 2 != 0).findFirst().get();
     }
 
 
